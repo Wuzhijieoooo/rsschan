@@ -272,9 +272,9 @@ def pushplus_bot(title: str, content: str) -> None:
 
     url = "http://www.pushplus.plus/send"
     titleLink = title
-    index = title.find("">") 
-    title = title[index]                   
-    index2 = title.find("</a>\n") 
+    index = title.find("">")
+    title = title[index]
+    index2 = title.find("</a>\n")
     title = title[:index2]
     data = {
         "token": push_config.get("PUSH_PLUS_TOKEN"),

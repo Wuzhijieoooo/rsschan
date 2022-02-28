@@ -279,22 +279,22 @@ def pushplus_bot(title: str, content: str) -> None:
     }
     body = json.dumps(data).encode(encoding="utf-8")
     headers = {"Content-Type": "application/json"}
-    response = requests.post(url=url, data=body, headers=headers).json()
+    response = requests.post(url=url, data=data, headers=headers).json()
 
     if response["code"] == 200:
-        print("PUSHPLUS 推送成功！")
+        print("PUSHPLUS(plus) 推送成功！")
 
     else:
-
+        print("PUSHPLUS(plus) 推送失败！", response["msg"])
         url_old = "http://pushplus.hxtrip.com/send"
         headers["Accept"] = "application/json"
-        response = requests.post(url=url_old, data=body, headers=headers).json()
+        response = requests.post(url=url_old, data=data, headers=headers).json()
 
         if response["code"] == 200:
             print("PUSHPLUS(hxtrip) 推送成功！")
 
         else:
-            print("PUSHPLUS 推送失败！")
+            print("PUSHPLUS(hxtrip) 推送失败！", response["msg"])
 
 
 def qmsg_bot(title: str, content: str) -> None:

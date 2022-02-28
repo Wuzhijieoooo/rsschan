@@ -277,9 +277,9 @@ def pushplus_bot(title: str, content: str) -> None:
         "content": content,
         "topic": push_config.get("PUSH_PLUS_USER"),
     }
-    body = json.dumps(data).encode(encoding="utf-8")
+    body = json.dumps(data)
     headers = {"Content-Type": "application/json"}
-    response = requests.post(url=url, data=data, headers=headers).json()
+    response = requests.post(url=url, data=body, headers=headers).json()
 
     if response["code"] == 200:
         print("PUSHPLUS(plus) 推送成功！")
@@ -288,7 +288,7 @@ def pushplus_bot(title: str, content: str) -> None:
         print("PUSHPLUS(plus) 推送失败！", response["msg"])
         url_old = "http://pushplus.hxtrip.com/send"
         headers["Accept"] = "application/json"
-        response = requests.post(url=url_old, data=data, headers=headers).json()
+        response = requests.post(url=url_old, data=body, headers=headers).json()
 
         if response["code"] == 200:
             print("PUSHPLUS(hxtrip) 推送成功！")

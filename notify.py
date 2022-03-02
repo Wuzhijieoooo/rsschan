@@ -271,15 +271,10 @@ def pushplus_bot(title: str, content: str) -> None:
     print("PUSHPLUS 服务启动")
 
     url = "http://www.pushplus.plus/send"
-    titleLink = title
-    index = title.find("\">")
-    title = title[index]
-    index2 = title.find("<\/a>\n")
-    title = title[:index2]
     data = {
         "token": push_config.get("PUSH_PLUS_TOKEN"),
-        "title": title.replace("\n", "\\n")[:100],
-        "content": titleLink,
+        "title": 'Failure is how we grow.' || title.replace("\n", "\\n")[:100],
+        "content": title,
         "topic": push_config.get("PUSH_PLUS_USER"),
     }
     body = json.dumps(data)

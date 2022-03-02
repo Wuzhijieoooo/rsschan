@@ -271,9 +271,10 @@ def pushplus_bot(title: str, content: str) -> None:
     print("PUSHPLUS 服务启动")
 
     url = "http://www.pushplus.plus/send"
+    # title.replace("\n", "\\n")[:100]
     data = {
         "token": push_config.get("PUSH_PLUS_TOKEN"),
-        "title": 'Failure is how we grow.' || title.replace("\n", "\\n")[:100],
+        "title": 'Failure is how we grow.',
         "content": title,
         "topic": push_config.get("PUSH_PLUS_USER"),
     }
